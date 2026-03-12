@@ -2,11 +2,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
-from keras.models import load_model
+import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 
 # Load the trained model
-model = load_model("model.h5")
+model = tf.keras.models.load_model("model.h5")
 
 # Load encoders and scaler
 with open("label_encoder_gender.pkl", "rb") as file:
@@ -69,3 +69,4 @@ if prediction_proba > 0.5:
     st.error("Customer is likely to churn ❌")
 else:
     st.success("Customer is not likely to churn ✅")
+
